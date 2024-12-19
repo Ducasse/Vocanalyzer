@@ -25,6 +25,6 @@ VocReporterTest >> testPackagePatterns [
 	voc packagePatterns: #('Voc*').
 	voc computedMatchedPatterns.
 	self 
-		assert: (voc matchedPatterns collect: [ :each | each name ]) asSet 
+		assert: (voc matchedPackages collect: [ :each | each name ]) asSet 
 		equals: #('Vocanalyzer' 'VocanalyzerDataPackage1' 'VocanalyzerDataPackage2') asSet.
 ]
