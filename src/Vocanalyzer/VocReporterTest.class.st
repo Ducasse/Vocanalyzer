@@ -6,11 +6,25 @@ Class {
 }
 
 { #category : 'tests' }
+VocReporterTest >> testNumberOfClasses [
+
+	| voc |
+	voc := VocReporter new. 
+	voc packagePatterns: #('Voc*').
+	voc computedMatchedPatterns.
+	self 
+		assert: voc numberOfClasses equals: 5
+		
+]
+
+{ #category : 'tests' }
 VocReporterTest >> testPackagePatterns [
 
 	| voc |
 	voc := VocReporter new. 
 	voc packagePatterns: #('Voc*').
 	voc computedMatchedPatterns.
-	self assert: (voc matchedPatterns collect: [ :each | each packageName ]) asArray equals: #('Vocanalyzer').
+	self 
+		assert: (voc matchedPatterns collect: [ :each | each name ]) asSet 
+		equals: #('Vocanalyzer' 'VocanalyzerDataPackage1' 'VocanalyzerDataPackage2') asSet.
 ]
